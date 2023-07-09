@@ -1,0 +1,10 @@
+uvicorn
+fastapi
+selenium
+bs4
+fake_useragent
+xmltodict
+fastapi-users[sqlalchemy]
+asyncpg
+alembic
+pydantic
