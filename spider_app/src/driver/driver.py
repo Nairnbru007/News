@@ -19,7 +19,7 @@ def init_driver(headless=True):
 		options.add_argument("--headless")
 		options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
 		service = Service(executable_path=PATH_TO_DRIVER)
-		driver = webdriver.Firefox(service=service,options=options)
+		driver = webdriver.Firefox(service=service,options=options)#,log_path='./driver/geckodriver.log')
 	else:
 		options.add_argument("--headless")
 		useragent = UserAgent()
@@ -34,14 +34,14 @@ def init_driver(headless=True):
 
 		options.add_argument("--width=2560")
 		options.add_argument("--height=1440")
-		driver = webdriver.Firefox(firefox_profile=profile,executable_path=PATH_TO_DRIVER,options=options)
+		driver = webdriver.Firefox(firefox_profile=profile,executable_path=PATH_TO_DRIVER,options=options,log_path='./driver/geckodriver.log')
 		#driver = webdriver.Firefox(options=options)
 	driver.set_page_load_timeout(40)
 	driver.implicitly_wait(15)
 	return driver
-global driver
+global DRIVER
 try:
-	driver=init_driver()
+	DRIVER=init_driver()
 	print('--SELENIUM driver RUN--')
 except:
 	print('--ERROR SELENIUM driver COULD NOT RUN--')
