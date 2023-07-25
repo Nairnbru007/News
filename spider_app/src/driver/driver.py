@@ -10,14 +10,14 @@ def init_driver(headless=True):
 		PATH_TO_DRIVER = r'C:/test/slava/geck/geckodriver.exe'#os.path.join(os.getcwd(),'/geck/geckodriver.exe')
 	elif os.name == 'posix':
 		# linux
-		PATH_TO_DRIVER = r'/home/user/rssgen/slava/geck/geckodriver'
+		PATH_TO_DRIVER = r'/spider_app/src/driver/geckodriver'
 	else:
 		sys.exit(1)
 
 	options = webdriver.FirefoxOptions()
 	if headless==True:
 		options.add_argument("--headless")
-		options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
+		#options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
 		service = Service(executable_path=PATH_TO_DRIVER)
 		driver = webdriver.Firefox(service=service,options=options)#,log_path='./driver/geckodriver.log')
 	else:
