@@ -4,27 +4,16 @@ from fastapi import Depends
 from fastapi_users.db import SQLAlchemyBaseUserTableUUID, SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import JSON, TIMESTAMP, Boolean, Column, ForeignKey, Integer, String, Table
 
-metadata=MetaData()
+#DATABASE_URL = "sqlite+aiosqlite:///./test1.db"
+DATABASE_URL = 'postgresql+asyncpg://postgres:postgres@0.0.0.0:5432/postgres'
 
-roles = Table(
-    "roles",
-    metadata,
-    Column("id", Integer, primary_key=True),
-    Column("name", String, nullable=False),
-    Column("permissions", JSON),
-)
-
-DATABASE_URL = "sqlite+aiosqlite:///./test.db"
-#DATABASE_URL ='postgresql+asyncpg://postgres:1234@localhost:5432/'
 
 class Base(DeclarativeBase):
     pass
 
 
 class User(SQLAlchemyBaseUserTableUUID, Base):
-    #role_id = Column(Integer, ForeignKey(role.c.id))
     pass
 
 
